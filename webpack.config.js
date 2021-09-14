@@ -2,6 +2,8 @@
 const path = require('path');
 
 module.exports = {
+  // define o ambiente em que o webpack esta rodando
+  mode: 'development',
   // define qual o ponto de entrada da aplicacao
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   // define o que deve sair da aplicacao em si
