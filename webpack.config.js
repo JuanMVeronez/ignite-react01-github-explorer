@@ -1,5 +1,6 @@
 
 const path = require('path');
+const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   // define o ambiente em que o webpack esta rodando
@@ -15,6 +16,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  // o plugins define quais elementos extras seram utilizados nesse processo
+  plugins: [
+    new htmlWebpackPlugin({
+      template: path.resolve(__dirname, 'public', 'index.html')
+    })
+  ],
   // determina como lidar com cada tipo de extencao
   /*
     * o test determina o que deve ser validado (sempre usando expresoes regulares),
