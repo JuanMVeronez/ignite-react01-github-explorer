@@ -5,6 +5,8 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   // define o ambiente em que o webpack esta rodando
   mode: 'development',
+  // determina qual a configuracao de source map utilizado no ambiente, para poder determinar a clareza que o codigo deve ter no browser
+  devtool: 'eval-source-map',
   // define qual o ponto de entrada da aplicacao
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   // define o que deve sair da aplicacao em si
@@ -16,6 +18,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  // essa configuracao determina o arquivo estatico da aplicacao e cria um server para o webpack
   devServer: {
     static: {
       directory: path.resolve(__dirname, 'public')
