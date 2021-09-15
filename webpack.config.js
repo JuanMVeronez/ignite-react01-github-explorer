@@ -1,12 +1,13 @@
-
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   // define o ambiente em que o webpack esta rodando
-  mode: 'development',
+  mode: isDevelopment ? 'development' : 'production',
   // determina qual a configuracao de source map utilizado no ambiente, para poder determinar a clareza que o codigo deve ter no browser
-  devtool: 'eval-source-map',
+  devtool: isDevelopment ? 'eval-source-map' : 'source-map',
   // define qual o ponto de entrada da aplicacao
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   // define o que deve sair da aplicacao em si
