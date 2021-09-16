@@ -10,7 +10,7 @@ module.exports = {
   // determina qual a configuracao de source map utilizado no ambiente, para poder determinar a clareza que o codigo deve ter no browser
   devtool: isDevelopment ? 'eval-source-map' : 'source-map',
   // define qual o ponto de entrada da aplicacao
-  entry: path.resolve(__dirname, 'src', 'index.jsx'),
+  entry: path.resolve(__dirname, 'src', 'index.tsx'),
   // define o que deve sair da aplicacao em si
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -18,7 +18,7 @@ module.exports = {
   },
   // eh colocado quais sao os tipos de extencoes que ele tera de lidar
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', 'ts', 'tsx'],
   },
   // essa configuracao determina o arquivo estatico da aplicacao e cria um server para o webpack
   devServer: {
@@ -43,7 +43,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.[jt]sx?$/,
         exclude: /node_modules/,
         use: [
           {
