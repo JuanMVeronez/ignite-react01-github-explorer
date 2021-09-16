@@ -1,23 +1,34 @@
+import { RepositoryItem } from "./RepositoryItem";
+
+const repositories = [
+  {
+    name: 'ScheduleIt',
+    description: 'A personal schedule',
+    link: 'https://github.com/JuanMVeronez/ScheduleIt'
+  },
+  {
+    name: 'Podcastr',
+    description: 'A podcast compilator website',
+    link: 'https://github.com/JuanMVeronez/Podcastr'
+  },
+  {
+    name: 'usingTypeORM',
+    description: 'A basic back-end project using TypeORM',
+    link: 'https://github.com/JuanMVeronez/usingTypeORM'
+  },
+
+
+]
+
 export function RepositoryList() {
   return (
-    <section>
+    <section className="repository-list">
       <h1>Lista de repositórios</h1>
+      
       <ul>
-        <li>
-          <strong></strong>
-          <p>Component in ReactJS</p>
-          <a href="">Acessar repositório</a>
-        </li>
-        <li>
-          <strong></strong>
-          <p>Component in ReactJS</p>
-          <a href="">Acessar repositório</a>
-        </li>
-        <li>
-          <strong></strong>
-          <p>Component in ReactJS</p>
-          <a href="">Acessar repositório</a>
-        </li>
+        <RepositoryItem repository={repositories[0]}/>
+        <RepositoryItem repository={repositories[1]}/>
+        <RepositoryItem repository={repositories[2]}/>
       </ul>
     </section>
   )
