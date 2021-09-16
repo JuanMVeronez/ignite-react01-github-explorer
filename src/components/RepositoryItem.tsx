@@ -1,4 +1,11 @@
-export function RepositoryItem(props) {
+import { Repository } from "./Repository"
+
+type RepositoryItemProps 
+= {
+  repository: Repository;
+}
+
+export function RepositoryItem(props: RepositoryItemProps) {
   return (
     <li>
       <strong>{props.repository.name ?? 'Default'}</strong>
