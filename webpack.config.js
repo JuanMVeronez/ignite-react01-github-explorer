@@ -18,7 +18,7 @@ module.exports = {
   },
   // eh colocado quais sao os tipos de extencoes que ele tera de lidar
   resolve: {
-    extensions: ['.js', '.jsx', 'ts', 'tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   // essa configuracao determina o arquivo estatico da aplicacao e cria um server para o webpack
   devServer: {
@@ -43,7 +43,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.[jt]sx?$/,
+        test: /\.(j|t)sx$/,
         exclude: /node_modules/,
         use: [
           {
