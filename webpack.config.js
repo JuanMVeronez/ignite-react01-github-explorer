@@ -1,5 +1,6 @@
 const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -28,10 +29,11 @@ module.exports = {
   },
   // o plugins define quais elementos extras seram utilizados nesse processo
   plugins: [
-    new htmlWebpackPlugin({
+    isDevelopment && new ReactRefreshWebpackPlugin(),
+    new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html')
-    })
-  ],
+    }),
+  ].filter(Boolean),
   // determina como lidar com cada tipo de extencao
   /*
     * o test determina o que deve ser validado (sempre usando expresoes regulares),
@@ -43,7 +45,16 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: [
+                isDevelopment && require.resolve('react-refresh/babel')
+              ].filter(Boolean)
+            }
+          }
+        ],
       },
       {
         test: /\.css$/,
@@ -56,5 +67,5 @@ module.exports = {
         use: ['style-loader' , 'css-loader', 'sass-loader'],
       }
     ],
-  }
+  },
 };
